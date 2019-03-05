@@ -21,7 +21,7 @@ petrostickers = ['CAADAgADaQEAAklHHQABBEGA16tOb4YC',
                  'CAADAgADCwEAAvR7GQABuArOzKHFjusC']
 
 
-responces = [
+responceslist = [
     'Шутка ли',
     'АХАХ',
     'Супер, спасибо',

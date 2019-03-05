@@ -19,7 +19,7 @@ def ver(bot, update):
 
 def shutka(bot, update):
     stickers = petrostickers
-    responces = responces
+    responces = responceslist
     random.shuffle(responces)
     bot.send_message(chat_id=update.message.chat_id, text=responces[0])
     for x in range(5):
