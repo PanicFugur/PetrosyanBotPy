@@ -2,7 +2,7 @@ import telegram
 from telegram.ext import Updater, CommandHandler
 import logging
 import random
-from responces import rabotaetliresplist, version, petrostickers, responces, fishstick, quotes
+from responces import rabotaetliresplist, version, petrostickers, responceslist, fishstick, quotes
 from misc import load_file
 
 
