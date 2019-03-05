@@ -2,13 +2,15 @@ import telegram
 from telegram.ext import Updater, CommandHandler
 import logging
 import random
-from responces import rabotaetliresplist, version, petrostickers
+from responces import rabotaetliresplist, version, petrostickers, responces, fishstick, quotes
 from misc import load_file
 
 
 def rabotaetli(bot, update):
+    rabotaetlist = rabotaetliresplist
+    random.shuffle(rabotaetlist)
     number = random.randrange(0,3)
-    bot.send_message(chat_id=update.message.chat_id, text=rabotaetliresplist[number])
+    bot.send_message(chat_id=update.message.chat_id, text=rabotaetlist[number])
 
 
 def ver(bot, update):
@@ -16,8 +18,8 @@ def ver(bot, update):
 
 
 def shutka(bot, update):
-    stickers = load_file("Stickers.txt")
-    responces = load_file("Responces.txt")
+    stickers = petrostickers
+    responces = responces
     random.shuffle(responces)
     bot.send_message(chat_id=update.message.chat_id, text=responces[0])
     for x in range(5):
@@ -28,7 +30,7 @@ def shutka(bot, update):
 
 
 def fish(bot, update):
-    fish = load_file('Fish.txt')
+    fish = fishstick
     for x in range(5):
         random.shuffle(fish)
         number = random.randrange(0, len(fish)-1)
@@ -49,4 +51,5 @@ shutka_handler = CommandHandler('shutka', shutka)
 dispatcher.add_handler(rabotaetli_handler)
 dispatcher.add_handler(ver_handler)
 dispatcher.add_handler(shutka_handler)
+dispatcher.add_handler(fish)
 updater.start_polling()

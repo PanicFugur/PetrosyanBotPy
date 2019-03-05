@@ -19,3 +19,41 @@ petrostickers = ['CAADAgADaQEAAklHHQABBEGA16tOb4YC',
                  'CAADAgADfQEAAklHHQABmDW9Zi5dogQC',
                  'CAADAgADfwEAAklHHQAB_XyGP444HHMC',
                  'CAADAgADCwEAAvR7GQABuArOzKHFjusC']
+
+
+responces = [
+    'Шутка ли',
+    'АХАХ',
+    'Супер, спасибо',
+    'Хуютка',
+    'Я знал что ты так пошутишь',
+    'АХАХА СУКА Я ОРУ ПРОСТО АХАХА',
+    'Не понимаешь шутку - не шути',
+    'Если никто не ценит шутку кто-то же должен оценить']
+
+fishstick = [
+    'CAADAgADBAADijc4AAFx0NNqDnJm4QI',
+    'CAADAgADBgADijc4AAH50MoMENn2lQI',
+    'CAADAgADCAADijc4AAGB93daGX3cWgI',
+    'CAADAgADLQADijc4AAGBowxjAqAlGwI',
+    'CAADAgADDgADijc4AAGOGq6J30OGfwI',
+    'CAADAgADEAADijc4AAESVXqKiwYE2wI',
+    'CAADAgADEgADijc4AAF00GirhpifXQI',
+    'CAADAgADFAADijc4AAGtl5dISqHmiAI',
+    'CAADAgADFgADijc4AAErJ-ihzzsO7wI',
+    'CAADAgADJwADijc4AAE3oUMhargOuAI',
+    'CAADAgADGQADijc4AAHtT7j-b6m-2QI',
+    'CAADAgADGwADijc4AAEdwByBSe9kgQI',
+    'CAADAgADHQADijc4AAEw0RBgpCTPAAEC',
+    'CAADAgADHwADijc4AAFXWsuIC4i6fAI',
+    'CAADAgADMwADijc4AAGU2NZK2N9ilwI'
+]
+
+quotes = [
+    '"Так блэт и/или алло." © Алексей С.',
+    '"Функциональное программирование это ты программируешь функционально. Это можно понять по-другому." © Алексей С.',
+    '"Когда я говорю что-то про что-то, это не означает что это относится к чему-то." © Алексей С.',
+    '"Но если бы это была моя жизнь то тут ничего бы не было." © Алексей С.',
+    '"Ты сейчас посмеялся, но мне кажется ты смеёшься без смеха." © Алексей С.',
+    '"Не помню ничего конкретного ничего правда." © Алексей С.'
+]
