@@ -3,14 +3,12 @@ from telegram.ext import Updater, CommandHandler
 import logging
 import random
 from responces import rabotaetliresplist, version, petrostickers, responceslist, fishstick, quotes
-from misc import load_file
+from misc import load_file, shuffle_bag
 
 
 def rabotaetli(bot, update):
-    rabotaetlist = rabotaetliresplist
-    random.shuffle(rabotaetlist)
-    number = random.randrange(0,3)
-    bot.send_message(chat_id=update.message.chat_id, text=rabotaetlist[number])
+    rabotaetlist = shuffle_bag(rabotaetliresplist)
+    bot.send_message(chat_id=update.message.chat_id, text=rabotaetlist.pop)
 
 
 def ver(bot, update):
@@ -52,11 +50,12 @@ def mem(bot, update):
         bot.send_message(chat_id=update.message.chat_id, text='Здесь должен быть мем, но увы их нет, ибо создатель пес')
 
 
-updater = Updater(token="431555955:AAHmmmcJM2wcbJBlv7MbpaGVrAAVPgua6Pg")
+
+updater = Updater(token="431555955:AAHvMcpo42jf-TFeDvsTEeJ2yZCN0X5Jmjs") #Account for faulty token
 dispatcher = updater.dispatcher
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
-rabotaetli_handler = CommandHandler('rabotaetli', rabotaetli)
+rabotaetli_handler = CommandHandler('rabotaetli', rabotaetli) #Make loading smarter, like a list or something, it's an eyesore
 ver_handler = CommandHandler('ver', ver)
 shutka_handler = CommandHandler('shutka', shutka)
 fish_handler = CommandHandler('fish', fish)
