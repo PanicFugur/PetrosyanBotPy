@@ -16,6 +16,6 @@ class shuffle_bag:
 
     def pop(self):
         random.shuffle(self.items)
-        picked_item = self.items[len(self.items)]
-        self.items.pop(len(self.items))
+        picked_item = self.items[len(self.items)-1]
+        self.items.pop(len(self.items)-1)
         return picked_item

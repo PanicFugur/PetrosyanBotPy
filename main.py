@@ -8,7 +8,7 @@ from misc import load_file, shuffle_bag
 
 def rabotaetli(bot, update):
     rabotaetlist = shuffle_bag(rabotaetliresplist)
-    bot.send_message(chat_id=update.message.chat_id, text=rabotaetlist.pop)
+    bot.send_message(chat_id=update.message.chat_id, text=rabotaetlist.pop())
 
 
 def ver(bot, update):
