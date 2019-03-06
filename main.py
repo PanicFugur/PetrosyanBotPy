@@ -38,7 +38,18 @@ def fish(bot, update):
                          sticker=fish[number])
 
 
-   
+def nebo(bot, update):
+    bot.send_message(chat_id=update.message.chat_id, text='А где неба нет?')
+    bot.send_sticker(chat_id=update.message.chat_id,
+                     sticker=petrostickers[len(petrostickers)-1])
+
+
+def topshutka(bot, update):
+        bot.send_message(chat_id=update.message.chat_id, text='https://www.youtube.com/watch?v=VQGLnaNQKds')
+
+
+def mem(bot, update):
+        bot.send_message(chat_id=update.message.chat_id, text='Здесь должен быть мем, но увы их нет, ибо создатель пес')
 
 
 updater = Updater(token="431555955:AAHmmmcJM2wcbJBlv7MbpaGVrAAVPgua6Pg")
