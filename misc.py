@@ -9,24 +9,24 @@ def load_file(filename):
     return allRows
 
 
+
 class shuffle_bag:
 
     def __init__(self, items):
-        self.items = items
-        self.source = items
+        self.items = items.copy()
+        self.source = items.copy()
 
-    def refill(func):
-        def wrapper(self):
-            if len(self.items) == 0:
-                self.items = self.source
-                func(self)
-            else:
-                func(self)
-        return wrapper
-
-    @refill
-    def pop(self):
+    def draw(self):
         random.shuffle(self.items)
         picked_item = self.items[len(self.items)-1]
         self.items.pop(len(self.items)-1)
         return picked_item
+
+    def pop(self):
+        if len(self.items) == 1:
+            self.items = self.source
+            result = self.draw()
+        else:
+            result = self.draw()
+        return result
+
