@@ -3,12 +3,13 @@ from telegram.ext import Updater, CommandHandler
 import logging
 import random
 from responces import rabotaetliresplist, version, petrostickers, responceslist, fishstick, quotes
-from misc import load_file, shuffle_bag
+from misc import load_file, shuffle_bag, meme_bag
 
 rabotaetlist = shuffle_bag(rabotaetliresplist)
 stickers = shuffle_bag(petrostickers)
 responces = shuffle_bag(responceslist)
 fish = shuffle_bag(fishstick)
+memes = meme_bag()
 
 def rabotaetli(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text=rabotaetlist.pop())
@@ -42,7 +43,7 @@ def topshutka(bot, update):
 
 
 def mem(bot, update):
-        bot.send_message(chat_id=update.message.chat_id, text='Здесь должен быть мем, но увы их нет, ибо создатель пес')
+        bot.send_photo(chat_id=update.message.chat_id, photo=memes.pop())
 
 
 
@@ -56,10 +57,12 @@ shutka_handler = CommandHandler('shutka', shutka)
 fish_handler = CommandHandler('fish', neznayu)
 nebo_handler = CommandHandler('nebo', nebo)
 topshutka_handler = CommandHandler('topshutka', topshutka)
+mem_handler = CommandHandler('mem', mem)
 dispatcher.add_handler(rabotaetli_handler)
 dispatcher.add_handler(ver_handler)
 dispatcher.add_handler(shutka_handler)
 dispatcher.add_handler(fish_handler)
 dispatcher.add_handler(nebo_handler)
 dispatcher.add_handler(topshutka_handler)
+dispatcher.add_handler(mem_handler)
 updater.start_polling()

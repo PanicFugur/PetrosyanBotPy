@@ -1,5 +1,7 @@
 import csv
 import random
+from os import listdir
+from os.path import isfile, join
 
 
 def load_file(filename):
@@ -7,8 +9,7 @@ def load_file(filename):
     reader = csv.reader(file)
     allRows = [row for row in reader]
     return allRows
-
-
+    
 
 class shuffle_bag:
 
@@ -29,4 +30,14 @@ class shuffle_bag:
             self.items = self.source.copy()
             result = self.draw()
         return result
+
+
+class meme_bag:
+    def list_memes(self):
+        memes = [f for f in listdir('memes') if isfile(join('memes', f))]
+        return memes
+    def __init__(self):
+        self.memes =  shuffle_bag(self.list_memes())
+    def pop(self):
+        return join('memes', self.memes.pop())
 
