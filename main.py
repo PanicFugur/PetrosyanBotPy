@@ -5,9 +5,9 @@ import random
 from responces import rabotaetliresplist, version, petrostickers, responceslist, fishstick, quotes
 from misc import load_file, shuffle_bag
 
+rabotaetlist = shuffle_bag(rabotaetliresplist)
 
 def rabotaetli(bot, update):
-    rabotaetlist = shuffle_bag(rabotaetliresplist)
     bot.send_message(chat_id=update.message.chat_id, text=rabotaetlist.pop())
 
 
