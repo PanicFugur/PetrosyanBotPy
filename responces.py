@@ -17,8 +17,7 @@ petrostickers = ['CAADAgADaQEAAklHHQABBEGA16tOb4YC',
                  'CAADAgADeQEAAklHHQABle7NQ8Mn9cQC',
                  'CAADAgADewEAAklHHQABt152J5TO-1IC',
                  'CAADAgADfQEAAklHHQABmDW9Zi5dogQC',
-                 'CAADAgADfwEAAklHHQAB_XyGP444HHMC',
-                 'CAADAgADCwEAAvR7GQABuArOzKHFjusC']
+                 'CAADAgADfwEAAklHHQAB_XyGP444HHMC']
 
 
 responceslist = [

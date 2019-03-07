@@ -36,7 +36,7 @@ def neznayu(bot, update):
 def nebo(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text='А где неба нет?')
     bot.send_sticker(chat_id=update.message.chat_id,
-                     sticker=petrostickers[-1])
+                     sticker='CAADAgADCwEAAvR7GQABuArOzKHFjusC')
 
 
 def topshutka(bot, update):
