@@ -43,7 +43,7 @@ def topshutka(bot, update):
 
 
 def mem(bot, update):
-        bot.send_photo(chat_id=update.message.chat_id, photo=memes.pop())
+        bot.send_photo(chat_id=update.message.chat_id, photo=open(memes.pop(), 'rb'))
 
 
 
