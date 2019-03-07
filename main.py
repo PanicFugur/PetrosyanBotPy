@@ -2,6 +2,7 @@ import telegram
 from telegram.ext import Updater, CommandHandler
 import logging
 import random
+import pickle
 from responces import rabotaetliresplist, version, petrostickers, responceslist, fishstick, quotes
 from misc import load_file, shuffle_bag, meme_bag
 
@@ -43,7 +44,15 @@ def topshutka(bot, update):
 
 
 def mem(bot, update):
-        bot.send_photo(chat_id=update.message.chat_id, photo=open(memes.pop(), 'rb'))
+        f = open(memes.pop(), 'rb')
+        bot.send_photo(chat_id=update.message.chat_id, photo=f)
+        f.close
+
+
+def qotd(bot, update):
+        with open('qotd.txt') as f:
+                quote = pickle.load(f)
+        bot.send_message(chat_id=update.message.chat_id, text=quote)
 
 
 
@@ -54,10 +63,11 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 rabotaetli_handler = CommandHandler('rabotaetli', rabotaetli) #Make loading smarter, like a list or something, it's an eyesore
 ver_handler = CommandHandler('ver', ver)
 shutka_handler = CommandHandler('shutka', shutka)
-fish_handler = CommandHandler('fish', neznayu)
+fish_handler = CommandHandler('neznayu', neznayu)
 nebo_handler = CommandHandler('nebo', nebo)
 topshutka_handler = CommandHandler('topshutka', topshutka)
 mem_handler = CommandHandler('mem', mem)
+qotd_handler = CommandHandler('qotd', qotd)
 dispatcher.add_handler(rabotaetli_handler)
 dispatcher.add_handler(ver_handler)
 dispatcher.add_handler(shutka_handler)
@@ -65,4 +75,5 @@ dispatcher.add_handler(fish_handler)
 dispatcher.add_handler(nebo_handler)
 dispatcher.add_handler(topshutka_handler)
 dispatcher.add_handler(mem_handler)
+dispatcher.add_handler(qotd_handler)
 updater.start_polling()
