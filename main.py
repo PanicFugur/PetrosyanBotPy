@@ -50,7 +50,7 @@ def mem(bot, update):
 
 
 def qotd(bot, update):
-        with open('qotd.txt') as f:
+        with open('qotd.txt', 'rb') as f:
                 quote = pickle.load(f)
         bot.send_message(chat_id=update.message.chat_id, text=quote)
 
