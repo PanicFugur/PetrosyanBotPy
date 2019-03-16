@@ -1,24 +1,16 @@
-import schedule
-import time
-import pickle
 import os
-from responces import quotes
+import pickle
+import random
+import time
+import logging
+
 from misc import shuffle_bag
+from responces import quotes
 
-
-qoutelist = shuffle_bag(quotes)
-
-def pick():
-    qotd = qoutelist.pop()
-    with open('qotd.txt', 'wb') as f:
-        pickle.dump(qotd, f)
-    print('Quote changed')    
-
-schedule.every().day.at("21:01").do(pick)
-
-if os.path.isfile('./qotd.txt'):
-         os.remove('qotd.txt')
-pick()
-while 1:
-    schedule.run_pending()
-    time.sleep(1)
+logging.basicConfig(filename='misc/app.log', format='%(asctime)s - %(message)s', level=logging.INFO)
+qoutelist = shuffle_bag(quotes, 'qotd')
+qotd = qoutelist.pop()
+with open('qotd', 'wb') as f:
+    pickle.dump(qotd, f)
+logging.info('Quote changed')
+   
