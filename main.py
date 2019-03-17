@@ -2,6 +2,7 @@ import logging
 import pickle
 import random
 import time
+import os
 
 import telegram
 from telegram.ext import CommandHandler, Updater
@@ -10,6 +11,7 @@ from err import error_callback
 from misc import meme_bag, shuffle_bag
 from responces import (fishstick, petrostickers, quotes, rabotaetliresplist,
                        responceslist, version)
+from os.path import join
 
 rabotaetlist = shuffle_bag(rabotaetliresplist, 'rabotaetli')
 stickers = shuffle_bag(petrostickers, 'stickers')
@@ -65,7 +67,7 @@ def mem(bot, update):
 
 def qotd(bot, update):
         print(('{0}||{1}:{2}'.format(time.asctime( time.localtime(time.time())), update.message.from_user.username, update.message.text)))
-        with open('qotd', 'rb') as f:
+        with open(join(os.path.dirname(os.path.realpath(__file__)), 'qotd'), 'rb') as f:
                 quote = pickle.load(f)
         bot.send_message(chat_id=update.message.chat_id, text=quote)
 
