@@ -103,18 +103,9 @@ dispatcher.add_handler(qotd_handler)
 dispatcher.add_error_handler(error_callback)
 
 
-b = True
-while b:
-        a = input("Petrosyan>>")
-        if a == 'start':
-                updater.start_polling()
-                print(('{0}||{1}'.format(time.asctime( time.localtime(time.time())), 'Starting polling')))
-
-        elif a == 'exit':
-                print(('{0}||{1}'.format(time.asctime( time.localtime(time.time())), 'Quitting bot')))
-                updater.stop()
-                b = False
-                raise SystemExit(0)
+updater.start_polling()
+print(('{0}||{1}'.format(time.asctime( time.localtime(time.time())), 'Starting polling')))
+updater.idle()
 
 
 #
