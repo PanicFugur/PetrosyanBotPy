@@ -10,15 +10,15 @@ from responces import quotes
 from os.path import join
 
 try:
-    with open('qotd', 'rb') as f:
+    with open(join(os.path.dirname(os.path.realpath(__file__)),'qotd'), 'rb') as f:
         print(pickle.load(f))
     logging.basicConfig(filename=join(os.path.dirname(os.path.realpath(__file__)),'app.log'), format='%(asctime)s - %(message)s', level=logging.INFO)
     qoutelist = shuffle_bag(quotes, 'qotd')
     qotd = qoutelist.pop()
-    with open('qotd', 'wb') as f:
+    with open(join(os.path.dirname(os.path.realpath(__file__)),'qotd'), 'wb') as f:
         pickle.dump(qotd, f)
     logging.info('Quote changed')
-    with open('qotd', 'rb') as f:
+    with open(join(os.path.dirname(os.path.realpath(__file__)),'qotd'), 'rb') as f:
         print(pickle.load(f))
 except Exception as e:
     print('Error had occured while picking a quote')
