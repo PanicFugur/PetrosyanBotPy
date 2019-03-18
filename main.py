@@ -3,6 +3,7 @@ import pickle
 import random
 import time
 import os
+import securestuff
 
 import telegram
 from telegram.ext import CommandHandler, Updater
@@ -72,8 +73,10 @@ def qotd(bot, update):
         bot.send_message(chat_id=update.message.chat_id, text=quote)
 
 
+
 try:
-        updater = Updater(token="431555955:AAHvMcpo42jf-TFeDvsTEeJ2yZCN0X5Jmjs")
+        
+        updater = Updater(token=securestuff.test_token, request_kwargs=securestuff.REQUEST_KWARGS)
         print(('{0}||{1}'.format(time.asctime( time.localtime(time.time())), 'Connected to the API')))
 except:
         print(('{0}||{1}'.format(time.asctime( time.localtime(time.time())), 'Exception during connection')))
