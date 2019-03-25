@@ -2,3 +2,5 @@ misc/*
 testing_ground.py
 qotd
 securestuff.py
+.vscode
+__pycache__
