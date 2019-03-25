@@ -7,6 +7,7 @@ from os.path import join
 
 import telegram
 from telegram.ext import CommandHandler, Updater
+from textgen import getKolyaVbros
 
 import securestuff
 from err import error_callback
@@ -72,6 +73,12 @@ def qotd(bot, update):
                 quote = pickle.load(f)
         bot.send_message(chat_id=update.message.chat_id, text=quote)
 
+def vbros(bot, update):
+        print(('{0}||{1}:{2}'.format(time.asctime( time.localtime(time.time())), update.message.from_user.username, update.message.text)))
+        msgtext = getKolyaVbros()
+        bot.send_message(chat_id=update.message.chat_id, text=msgtext)
+        
+
 
 def main():
         try:
@@ -97,6 +104,7 @@ def main():
         topshutka_handler = CommandHandler('topshutka', topshutka)
         mem_handler = CommandHandler('mem', mem)
         qotd_handler = CommandHandler('qotd', qotd)
+        vbros_handler = CommandHandler('vbros', vbros)
         dispatcher.add_handler(rabotaetli_handler)
         dispatcher.add_handler(ver_handler)
         dispatcher.add_handler(shutka_handler)
@@ -105,6 +113,7 @@ def main():
         dispatcher.add_handler(topshutka_handler)
         dispatcher.add_handler(mem_handler)
         dispatcher.add_handler(qotd_handler)
+        dispatcher.add_handler(vbros_handler)
         dispatcher.add_error_handler(error_callback)
 
 
@@ -116,5 +125,3 @@ def main():
 if __name__ == "__main__":
      main()
 
-
-#
