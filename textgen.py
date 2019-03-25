@@ -48,11 +48,10 @@ def getKolyaVbros():
     rule = makerule(data, 3)
     string = makestring(rule, 30)
     string = string.capitalize()
-    string = string.append('.')
     return string
 
 if __name__ == '__main__':
-    data = openfile(join('misc', 'Kolyan.txt'))
-    rule = makerule(data, 3)
+    data = openfile(join('misc', 'sample.txt'))
+    rule = makerule(data, 0)
     string = makestring(rule, 30)
     print(string.capitalize())
