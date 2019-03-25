@@ -51,7 +51,7 @@ def getKolyaVbros():
     return string
 
 if __name__ == '__main__':
-    data = openfile(join('misc', 'sample.txt'))
-    rule = makerule(data, 0)
-    string = makestring(rule, 30)
+    data = openfile(join('misc', 'output.txt'))
+    rule = makerule(data, 10)
+    string = makestring(rule, 300)
     print(string.capitalize())
