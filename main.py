@@ -1,18 +1,18 @@
 import logging
-import pickle
+import os
+import _pickle as pickle
 import random
 import time
-import os
-import securestuff
+from os.path import join
 
 import telegram
 from telegram.ext import CommandHandler, Updater
 
+import securestuff
 from err import error_callback
 from misc import meme_bag, shuffle_bag
 from responces import (fishstick, petrostickers, quotes, rabotaetliresplist,
                        responceslist, version)
-from os.path import join
 
 rabotaetlist = shuffle_bag(rabotaetliresplist, 'rabotaetli')
 stickers = shuffle_bag(petrostickers, 'stickers')
@@ -73,44 +73,48 @@ def qotd(bot, update):
         bot.send_message(chat_id=update.message.chat_id, text=quote)
 
 
+def main():
+        try:
+                
+                updater = Updater(token=securestuff.test_token, request_kwargs=securestuff.REQUEST_KWARGS)
+                print(('{0}||{1}'.format(time.asctime( time.localtime(time.time())), 'Connected to the API')))
+        except:
+                print(('{0}||{1}'.format(time.asctime( time.localtime(time.time())), 'Exception during connection')))
 
-try:
-        
-        updater = Updater(token=securestuff.test_token, request_kwargs=securestuff.REQUEST_KWARGS)
-        print(('{0}||{1}'.format(time.asctime( time.localtime(time.time())), 'Connected to the API')))
-except:
-        print(('{0}||{1}'.format(time.asctime( time.localtime(time.time())), 'Exception during connection')))
-
- #Account for faulty token
-dispatcher = updater.dispatcher
-
-
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    level=logging.INFO)
+        #Account for faulty token
+        dispatcher = updater.dispatcher
 
 
-rabotaetli_handler = CommandHandler('rabotaetli', rabotaetli) #Make loading smarter, like a list or something, it's an eyesore(Forget it)
-ver_handler = CommandHandler('ver', ver)
-shutka_handler = CommandHandler('shutka', shutka)
-fish_handler = CommandHandler('neznayu', neznayu)
-nebo_handler = CommandHandler('nebo', nebo)
-topshutka_handler = CommandHandler('topshutka', topshutka)
-mem_handler = CommandHandler('mem', mem)
-qotd_handler = CommandHandler('qotd', qotd)
-dispatcher.add_handler(rabotaetli_handler)
-dispatcher.add_handler(ver_handler)
-dispatcher.add_handler(shutka_handler)
-dispatcher.add_handler(fish_handler)
-dispatcher.add_handler(nebo_handler)
-dispatcher.add_handler(topshutka_handler)
-dispatcher.add_handler(mem_handler)
-dispatcher.add_handler(qotd_handler)
-dispatcher.add_error_handler(error_callback)
+        logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                        level=logging.INFO)
 
 
-updater.start_polling()
-print(('{0}||{1}'.format(time.asctime( time.localtime(time.time())), 'Starting polling')))
-updater.idle()
+        rabotaetli_handler = CommandHandler('rabotaetli', rabotaetli) #Make loading smarter, like a list or something, it's an eyesore(Forget it)
+        ver_handler = CommandHandler('ver', ver)
+        shutka_handler = CommandHandler('shutka', shutka)
+        fish_handler = CommandHandler('neznayu', neznayu)
+        nebo_handler = CommandHandler('nebo', nebo)
+        topshutka_handler = CommandHandler('topshutka', topshutka)
+        mem_handler = CommandHandler('mem', mem)
+        qotd_handler = CommandHandler('qotd', qotd)
+        dispatcher.add_handler(rabotaetli_handler)
+        dispatcher.add_handler(ver_handler)
+        dispatcher.add_handler(shutka_handler)
+        dispatcher.add_handler(fish_handler)
+        dispatcher.add_handler(nebo_handler)
+        dispatcher.add_handler(topshutka_handler)
+        dispatcher.add_handler(mem_handler)
+        dispatcher.add_handler(qotd_handler)
+        dispatcher.add_error_handler(error_callback)
+
+
+        updater.start_polling()
+        print(('{0}||{1}'.format(time.asctime( time.localtime(time.time())), 'Starting polling')))
+        updater.idle()
+
+
+if __name__ == "__main__":
+     main()
 
 
 #

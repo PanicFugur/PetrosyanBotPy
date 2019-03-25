@@ -1,6 +1,6 @@
 import csv
 import os
-import pickle
+import _pickle as pickle
 import random
 import time
 from os import listdir
