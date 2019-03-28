@@ -1,19 +1,19 @@
 import logging
 import os
-import _pickle as pickle
 import random
 import time
 from os.path import join
 
 import telegram
 from telegram.ext import CommandHandler, Updater
-from textgen import getKolyaVbros
 
+import _pickle as pickle
 import securestuff
 from err import error_callback
 from misc import meme_bag, shuffle_bag
 from responces import (fishstick, petrostickers, quotes, rabotaetliresplist,
                        responceslist, version)
+from textgen import getKolyaVbros
 
 rabotaetlist = shuffle_bag(rabotaetliresplist, 'rabotaetli')
 stickers = shuffle_bag(petrostickers, 'stickers')
@@ -143,4 +143,3 @@ def main():
 
 if __name__ == "__main__":
      main()
-
