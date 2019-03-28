@@ -4,3 +4,5 @@ qotd
 securestuff.py
 .vscode/*
 __pycache__/*
+test*
+out*

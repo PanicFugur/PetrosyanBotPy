@@ -23,7 +23,18 @@ memes = meme_bag()
 
 
 def rabotaetli(bot, update):
-        bot.send_message(chat_id=update.message.chat_id, text=rabotaetlist.pop())
+        if (random.randrange(0,10)>=1):
+                bot.send_message(chat_id=update.message.chat_id, text=rabotaetlist.pop())
+        else:
+                print('PROC!')
+                if update.message.from_user.id == securestuff.ilia_id:
+                        update.message.reply_text("Конечно нет, Илюх, а что?")
+                elif update.message.from_user.id == securestuff.leha_id:
+                        update.message.reply_text("А вы как думаете, Алексей?")
+                elif update.message.from_user.id == securestuff.pes_id:
+                        update.message.reply_text("Не работаю как и ты, Аллоксей")
+                else:
+                        update.message.reply_text(rabotaetlist.pop())
         print(('{0}||{1}:{2}'.format(time.asctime( time.localtime(time.time())), update.message.from_user.username, update.message.text)))
 
 
@@ -77,13 +88,30 @@ def vbros(bot, update):
         print(('{0}||{1}:{2}'.format(time.asctime( time.localtime(time.time())), update.message.from_user.username, update.message.text)))
         msgtext = getKolyaVbros()
         bot.send_message(chat_id=update.message.chat_id, text=msgtext)
+
+def start(bot, update):
+        print(('{0}||{1}:{2}'.format(time.asctime( time.localtime(time.time())), update.message.from_user.username, update.message.text)))
+        custom_keyboard = [['/rabotaetli - бот ты работаешь?', '/shutka - тут шутканули'], 
+                   ['/qotd - мудрость дня', '/mem - покажи мне мем, бот'],
+                   ['/vbros - Колян, отзовись', '/nebo - 🤔']]
+
+        reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
+
+        bot.send_message(chat_id=update.message.chat_id, text='Чего желаете?',reply_markup=reply_markup)
         
 
 
 def main():
         try:
+                if securestuff.production_token:
+                        token = securestuff.petr_token
+                else:
+                        token = securestuff.test_token
+                if securestuff.use_proxy == True:
+                        updater = Updater(token=token, request_kwargs=securestuff.REQUEST_KWARGS)
+                else:
+                        updater = Updater(token=token)
                 
-                updater = Updater(token=securestuff.test_token, request_kwargs=securestuff.REQUEST_KWARGS)
                 print(('{0}||{1}'.format(time.asctime( time.localtime(time.time())), 'Connected to the API')))
         except:
                 print(('{0}||{1}'.format(time.asctime( time.localtime(time.time())), 'Exception during connection')))
@@ -95,25 +123,16 @@ def main():
         logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                         level=logging.INFO)
 
-
-        rabotaetli_handler = CommandHandler('rabotaetli', rabotaetli) #Make loading smarter, like a list or something, it's an eyesore(Forget it)
-        ver_handler = CommandHandler('ver', ver)
-        shutka_handler = CommandHandler('shutka', shutka)
-        fish_handler = CommandHandler('neznayu', neznayu)
-        nebo_handler = CommandHandler('nebo', nebo)
-        topshutka_handler = CommandHandler('topshutka', topshutka)
-        mem_handler = CommandHandler('mem', mem)
-        qotd_handler = CommandHandler('qotd', qotd)
-        vbros_handler = CommandHandler('vbros', vbros)
-        dispatcher.add_handler(rabotaetli_handler)
-        dispatcher.add_handler(ver_handler)
-        dispatcher.add_handler(shutka_handler)
-        dispatcher.add_handler(fish_handler)
-        dispatcher.add_handler(nebo_handler)
-        dispatcher.add_handler(topshutka_handler)
-        dispatcher.add_handler(mem_handler)
-        dispatcher.add_handler(qotd_handler)
-        dispatcher.add_handler(vbros_handler)
+        dispatcher.add_handler(CommandHandler('rabotaetli', rabotaetli))
+        dispatcher.add_handler(CommandHandler('ver', ver))
+        dispatcher.add_handler(CommandHandler('shutka', shutka))
+        dispatcher.add_handler(CommandHandler('neznayu', neznayu))
+        dispatcher.add_handler(CommandHandler('nebo', nebo))
+        dispatcher.add_handler(CommandHandler('topshutka', topshutka))
+        dispatcher.add_handler(CommandHandler('mem', mem))
+        dispatcher.add_handler(CommandHandler('qotd', qotd))
+        dispatcher.add_handler(CommandHandler('vbros', vbros))
+        dispatcher.add_handler(CommandHandler('start', start))
         dispatcher.add_error_handler(error_callback)
 
 
