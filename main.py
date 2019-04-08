@@ -131,7 +131,7 @@ def main():
         dispatcher.add_handler(CommandHandler('topshutka', topshutka))
         dispatcher.add_handler(CommandHandler('mem', mem))
         dispatcher.add_handler(CommandHandler('qotd', qotd))
-        dispatcher.add_handler(CommandHandler('vbros', vbros))
+        #dispatcher.add_handler(CommandHandler('vbros', vbros))
         dispatcher.add_handler(CommandHandler('start', start))
         dispatcher.add_error_handler(error_callback)
 
