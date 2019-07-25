@@ -84,10 +84,6 @@ def qotd(bot, update):
                 quote = pickle.load(f)
         bot.send_message(chat_id=update.message.chat_id, text=quote)
 
-def vbros(bot, update):
-        print(('{0}||{1}:{2}'.format(time.asctime( time.localtime(time.time())), update.message.from_user.username, update.message.text)))
-        msgtext = getKolyaVbros()
-        bot.send_message(chat_id=update.message.chat_id, text=msgtext)
 
 def start(bot, update):
         print(('{0}||{1}:{2}'.format(time.asctime( time.localtime(time.time())), update.message.from_user.username, update.message.text)))
@@ -131,7 +127,6 @@ def main():
         dispatcher.add_handler(CommandHandler('topshutka', topshutka))
         dispatcher.add_handler(CommandHandler('mem', mem))
         dispatcher.add_handler(CommandHandler('qotd', qotd))
-        #dispatcher.add_handler(CommandHandler('vbros', vbros))
         dispatcher.add_handler(CommandHandler('start', start))
         dispatcher.add_error_handler(error_callback)
 
