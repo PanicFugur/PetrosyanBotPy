@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import logging
 import os
 import random
@@ -13,8 +16,6 @@ from err import error_callback
 from misc import meme_bag, shuffle_bag
 from responces import (fishstick, petrostickers, quotes, rabotaetliresplist,
                        responceslist, version)
-from textgen import getKolyaVbros
-
 rabotaetlist = shuffle_bag(rabotaetliresplist, 'rabotaetli')
 stickers = shuffle_bag(petrostickers, 'stickers')
 responces = shuffle_bag(responceslist, 'responces')
@@ -89,7 +90,7 @@ def start(bot, update):
         print(('{0}||{1}:{2}'.format(time.asctime( time.localtime(time.time())), update.message.from_user.username, update.message.text)))
         custom_keyboard = [['/rabotaetli - бот ты работаешь?', '/shutka - тут шутканули'], 
                    ['/qotd - мудрость дня', '/mem - покажи мне мем, бот'],
-                   ['/vbros - Колян, отзовись', '/nebo - 🤔']]
+                   ['/vbros - Колян, отзовись', '/nebo - ']]
 
         reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
 
