@@ -15,11 +15,6 @@ from responces import (fishstick, petrostickers, quotes, rabotaetliresplist,
                        responceslist, version)
 from textgen import getKolyaVbros
 
-rabotaetlist = shuffle_bag(rabotaetliresplist, 'rabotaetli')
-stickers = shuffle_bag(petrostickers, 'stickers')
-responces = shuffle_bag(responceslist, 'responces')
-fish = shuffle_bag(fishstick, 'fish')
-memes = meme_bag()
 
 
 def rabotaetli(bot, update):
@@ -142,4 +137,15 @@ def main():
 
 
 if __name__ == "__main__":
+     if not os.path.isdir('misc'):
+        try:
+            os.mkdir('misc')
+        except OSError:
+            print ("Creation of the directory failed")
+     rabotaetlist = shuffle_bag(rabotaetliresplist, 'rabotaetli')
+     stickers = shuffle_bag(petrostickers, 'stickers')
+     responces = shuffle_bag(responceslist, 'responces')
+     fish = shuffle_bag(fishstick, 'fish')
+     memes = meme_bag()
+
      main()
