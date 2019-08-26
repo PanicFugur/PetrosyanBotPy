@@ -33,7 +33,7 @@ def rabotaetli(bot, update):
                 elif update.message.from_user.id == securestuff.leha_id:
                         update.message.reply_text("А вы как думаете, Алексей?")
                 elif update.message.from_user.id == securestuff.pes_id:
-                        update.message.reply_text("Не работаю как и ты, Аллоксей")
+                        update.message.reply_text("Нет, зато у меня не четрвертинка мозга")
                 else:
                         update.message.reply_text(rabotaetlist.pop())
         print(('{0}||{1}:{2}'.format(time.asctime( time.localtime(time.time())), update.message.from_user.username, update.message.text)))
