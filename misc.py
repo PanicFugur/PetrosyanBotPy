@@ -19,7 +19,8 @@ class shuffle_bag:
                 a = open(join(os.path.dirname(os.path.realpath(__file__)),'misc', ffile), 'wb')
                 a.close()
                 print('{0}||{1} file not found, creating'.format(time.asctime( time.localtime(time.time())) ,ffile))
-            print('{0}||{1} file is found but is empty'.format(time.asctime( time.localtime(time.time())) ,ffile))
+            else:
+                print('{0}||{1} file is found but is empty'.format(time.asctime( time.localtime(time.time())) ,ffile))
             self.items = items.copy()
         self.source = items.copy()
         self.file = ffile
