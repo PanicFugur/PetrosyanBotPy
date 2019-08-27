@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import logging
 import os
 import random
@@ -15,7 +18,6 @@ from responces import (fishstick, petrostickers, quotes, rabotaetliresplist,
                        responceslist, version)
 
 
-
 def rabotaetli(bot, update):
         if (random.randrange(0,10)>=1):
                 bot.send_message(chat_id=update.message.chat_id, text=rabotaetlist.pop())
@@ -26,7 +28,7 @@ def rabotaetli(bot, update):
                 elif update.message.from_user.id == securestuff.leha_id:
                         update.message.reply_text("А вы как думаете, Алексей?")
                 elif update.message.from_user.id == securestuff.pes_id:
-                        update.message.reply_text("Не работаю как и ты, Аллоксей")
+                        update.message.reply_text("Нет, зато у меня не четрвертинка мозга")
                 else:
                         update.message.reply_text(rabotaetlist.pop())
         print(('{0}||{1}:{2}'.format(time.asctime( time.localtime(time.time())), update.message.from_user.username, update.message.text)))
@@ -83,7 +85,7 @@ def start(bot, update):
         print(('{0}||{1}:{2}'.format(time.asctime( time.localtime(time.time())), update.message.from_user.username, update.message.text)))
         custom_keyboard = [['/rabotaetli - бот ты работаешь?', '/shutka - тут шутканули'], 
                    ['/qotd - мудрость дня', '/mem - покажи мне мем, бот'],
-                   ['/vbros - Колян, отзовись', '/nebo - 🤔']]
+                   ['/vbros - Колян, отзовись', '/nebo - ']]
 
         reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
 
@@ -121,7 +123,6 @@ def main():
         dispatcher.add_handler(CommandHandler('topshutka', topshutka))
         dispatcher.add_handler(CommandHandler('mem', mem))
         dispatcher.add_handler(CommandHandler('qotd', qotd))
-        #dispatcher.add_handler(CommandHandler('vbros', vbros))
         dispatcher.add_handler(CommandHandler('start', start))
         dispatcher.add_error_handler(error_callback)
 
