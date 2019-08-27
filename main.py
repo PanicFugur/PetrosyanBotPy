@@ -13,7 +13,6 @@ from err import error_callback
 from misc import meme_bag, shuffle_bag
 from responces import (fishstick, petrostickers, quotes, rabotaetliresplist,
                        responceslist, version)
-from textgen import getKolyaVbros
 
 
 
@@ -79,10 +78,6 @@ def qotd(bot, update):
                 quote = pickle.load(f)
         bot.send_message(chat_id=update.message.chat_id, text=quote)
 
-def vbros(bot, update):
-        print(('{0}||{1}:{2}'.format(time.asctime( time.localtime(time.time())), update.message.from_user.username, update.message.text)))
-        msgtext = getKolyaVbros()
-        bot.send_message(chat_id=update.message.chat_id, text=msgtext)
 
 def start(bot, update):
         print(('{0}||{1}:{2}'.format(time.asctime( time.localtime(time.time())), update.message.from_user.username, update.message.text)))
