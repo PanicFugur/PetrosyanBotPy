@@ -53,3 +53,5 @@ class meme_bag:
         self.memes =  shuffle_bag(self.list_memes(), 'memes')
     def pop(self):
         return join('memes', self.memes.pop())
+
+

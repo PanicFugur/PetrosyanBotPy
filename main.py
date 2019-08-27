@@ -16,11 +16,7 @@ from err import error_callback
 from misc import meme_bag, shuffle_bag
 from responces import (fishstick, petrostickers, quotes, rabotaetliresplist,
                        responceslist, version)
-rabotaetlist = shuffle_bag(rabotaetliresplist, 'rabotaetli')
-stickers = shuffle_bag(petrostickers, 'stickers')
-responces = shuffle_bag(responceslist, 'responces')
-fish = shuffle_bag(fishstick, 'fish')
-memes = meme_bag()
+from textgen import getKolyaVbros
 
 
 def rabotaetli(bot, update):
@@ -138,4 +134,15 @@ def main():
 
 
 if __name__ == "__main__":
+     if not os.path.isdir('misc'):
+        try:
+            os.mkdir('misc')
+        except OSError:
+            print ("Creation of the directory failed")
+     rabotaetlist = shuffle_bag(rabotaetliresplist, 'rabotaetli')
+     stickers = shuffle_bag(petrostickers, 'stickers')
+     responces = shuffle_bag(responceslist, 'responces')
+     fish = shuffle_bag(fishstick, 'fish')
+     memes = meme_bag()
+
      main()
