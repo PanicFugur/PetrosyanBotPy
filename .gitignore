@@ -6,3 +6,4 @@ securestuff.py
 __pycache__/*
 test*
 out*
+_script.py
