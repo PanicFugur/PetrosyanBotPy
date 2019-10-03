@@ -8,79 +8,37 @@ from os import listdir
 from os.path import isfile, join
 
 
-class shuffle_bag:
-
-    def __init__(self, items, ffile):
-        if (isfile(join('misc', ffile))) and (os.path.getsize(join(os.path.dirname(os.path.realpath(__file__)),'misc', ffile)) > 0):
-            with open((join(os.path.dirname(os.path.realpath(__file__)), 'misc', ffile)),'rb') as f:
-                self.items = pickle.load(f)
-                print('{0}||{1} file found and loaded data from it'.format(time.asctime( time.localtime(time.time())),ffile))
-        else:
-            if not isfile(join(os.path.dirname(os.path.realpath(__file__)),'misc', ffile)):
-                a = open(join(os.path.dirname(os.path.realpath(__file__)),'misc', ffile), 'wb')
-                a.close()
-                print('{0}||{1} file not found, creating'.format(time.asctime( time.localtime(time.time())) ,ffile))
-            else:
-                print('{0}||{1} file is found but is empty'.format(time.asctime( time.localtime(time.time())) ,ffile))
-            self.items = items.copy()
-        self.source = items.copy()
-        self.file = ffile
-
-    def draw(self):
-        random.shuffle(self.items)
-        picked_item = self.items[-1]
-        self.items.pop(-1)
-        with open(join(os.path.dirname(os.path.realpath(__file__)),'misc', self.file), 'wb') as f:
-            pickle.dump(self.items, f)
-        return picked_item
-
-    def pop(self):
-        try:
-            if self.items:
-                result = self.draw()
-            else:
-                self.items = self.source.copy()
-                result = self.draw()
-        except:
-            print(('{0}||{1}: {2}'.format(time.asctime( time.localtime(time.time())), 'Error popping from', self.file)))
-        return result
+def log(text):
+    print(f'{time.asctime( time.localtime(time.time()))}, {text}')
 
 
 class meme_bag:
     def list_memes(self):
         memes = [f for f in listdir(join(os.path.dirname(os.path.realpath(__file__)),'memes')) if isfile(join(os.path.dirname(os.path.realpath(__file__)),'memes', f))]
-        return memes
+        memesToStatus = {i : True for i in memes}
+        with open((join(os.path.dirname(os.path.realpath(__file__)), 'misc', 'memes.json')),'w') as f:
+            json.dump(memesToStatus, f, ensure_ascii=False, indent=4, separators=(',',': '))
     def __init__(self):
-        self.memes =  shuffle_bag(self.list_memes(), 'memes')
+        self.list_memes()
+        self.memes =  shuffle_bag('memes')
     def pop(self):
         return join('memes', self.memes.pop())
 
 
-class shuffle_bag2:
-    # def __init__(self, sourceFile):
-    #     #need to follow the ask forgiveness not permission principle
-    #     self.source = sourceFile
-    #     if not os.path.isdir('misc'):
-    #         os.mkdir('misc')
-    #     if not (isfile(os.path.join('misc', sourceFile))):
-    #         print('The file doesnt exist')
-    #     if os.path.isdir('misc') and os.path.isfile(os.path.join('misc', sourceFile)):
-    #         with open((join(os.path.dirname(os.path.realpath(__file__)), 'misc', self.source)),'r') as f:
-    #             self.items = json.load(f)
+class shuffle_bag:
 
     def __init__(self, sourceFile):
-        self.source = sourceFile
+        self.source = sourceFile + '.json'
         try:
             with open((join(os.path.dirname(os.path.realpath(__file__)), 'misc', self.source)),'r') as f:
                 self.items = json.load(f)
+            self.created = True
         except OSError as e:
-            print(e)
+            log(f'File {sourceFile} not found in folder misc or folder misc wasnt found')
+            self.created = False
         except Exception as e:
             print(e)
-
-
-
-
+            self.created = False
 
     def draw(self):
         result = []
@@ -106,15 +64,24 @@ class shuffle_bag2:
             return False
 
     def pop(self):
-        if self.needRefresh():
-            self.refresh()
-        item = self.draw()
-        self.items[item] = False
-        with open((join(os.path.dirname(os.path.realpath(__file__)), 'misc', self.source)),'w') as f:
-            json.dump(self.items, f, ensure_ascii=False, indent=4, separators=(',',': '))
-        return item
+        if self.created:
+            if self.needRefresh():
+                self.refresh()
+            item = self.draw()
+            self.items[item] = False
+            with open((join(os.path.dirname(os.path.realpath(__file__)), 'misc', self.source)),'w') as f:
+                json.dump(self.items, f, ensure_ascii=False, indent=4, separators=(',',': '))
+            return item
+        else:
+            log(f'The shuffle bag from {self.source} wasnt created so popping from it is impossible, please fix the filepaths or add the json sources')
+
+
 
 
 if __name__ == "__main__":
-    a = shuffle_bag2('petrosticker.json')
-    print(a.pop())
+    alice = shuffle_bag('petrostickers')
+    print(alice.pop())
+    log("yes")
+    bob = meme_bag()
+    print(bob.pop())
+     
