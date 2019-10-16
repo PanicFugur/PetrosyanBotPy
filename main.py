@@ -63,10 +63,5 @@ if __name__ == "__main__":
             os.mkdir('misc')
         except OSError:
             print ("Creation of the directory failed")
-     rabotaetlist = shuffle_bag('rabotaetliresplist')
-     stickers = shuffle_bag('petrostickers')
-     responces = shuffle_bag('responceslist')
-     fish = shuffle_bag('fishstick')
-     memes = meme_bag()
 
      main()

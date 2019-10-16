@@ -35,7 +35,7 @@ def ver(bot, update):
 
 
 def shutka(bot, update):
-        responces = shuffle_bag('respoceslist')
+        responces = shuffle_bag('responceslist')
         stickers = shuffle_bag('petrostickers')
         print(('{0}||{1}:{2}'.format(time.asctime( time.localtime(time.time())), update.message.from_user.username, update.message.text)))        
         bot.send_message(chat_id=update.message.chat_id, text=responces.pop())
