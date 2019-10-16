@@ -3,7 +3,7 @@ rabotaetliresplist = ["Нет, не работаю.",
                       "Нет, но я точно знаю что вы пес"]
 
 
-version = "PetrosyanBotPy версия 1.0.2!"
+version = "PetrosyanBotPy версия 1.1! Новых добавлений нет, зато переписано получше"
 
 
 petrostickers = ['CAADAgADaQEAAklHHQABBEGA16tOb4YC',
