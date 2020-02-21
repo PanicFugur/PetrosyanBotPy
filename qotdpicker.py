@@ -11,10 +11,8 @@ from os.path import join
 
 def main():
     try:
-        with open(join(os.path.dirname(os.path.realpath(__file__)),'qotd'), 'rb') as f:
-            print(pickle.load(f))
         logging.basicConfig(filename=join(os.path.dirname(os.path.realpath(__file__)),'app.log'), format='%(asctime)s - %(message)s', level=logging.INFO)
-        qoutelist = shuffle_bag(quotes, 'qotd')
+        qoutelist = shuffle_bag('quotes')
         qotd = qoutelist.pop()
         with open(join(os.path.dirname(os.path.realpath(__file__)),'qotd'), 'wb') as f:
             pickle.dump(qotd, f)
