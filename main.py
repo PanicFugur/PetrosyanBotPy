@@ -41,14 +41,14 @@ def main():
                         level=logging.INFO)
 
         dispatcher.add_handler(CommandHandler('rabotaetli', handlers.rabotaetli))
-        dispatcher.add_handler(CommandHandler('ver', handlers.ver))
-        dispatcher.add_handler(CommandHandler('shutka', handlers.shutka))
-        dispatcher.add_handler(CommandHandler('neznayu', handlers.neznayu))
-        dispatcher.add_handler(CommandHandler('nebo', handlers.nebo))
-        dispatcher.add_handler(CommandHandler('topshutka', handlers.topshutka))
-        dispatcher.add_handler(CommandHandler('mem', handlers.mem))
+        #dispatcher.add_handler(CommandHandler('ver', handlers.ver))
+        #dispatcher.add_handler(CommandHandler('shutka', handlers.shutka))
+        #dispatcher.add_handler(CommandHandler('neznayu', handlers.neznayu))
+        #dispatcher.add_handler(CommandHandler('nebo', handlers.nebo))
+        #dispatcher.add_handler(CommandHandler('topshutka', handlers.topshutka))
+        #dispatcher.add_handler(CommandHandler('mem', handlers.mem))
         dispatcher.add_handler(CommandHandler('qotd', handlers.qotd))
-        dispatcher.add_handler(CommandHandler('start', handlers.start))
+        #dispatcher.add_handler(CommandHandler('start', handlers.start))
         dispatcher.add_error_handler(error_callback)
 
 

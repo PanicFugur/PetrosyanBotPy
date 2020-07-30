@@ -12,19 +12,6 @@ def log(text):
     print(f'{time.asctime( time.localtime(time.time()))}, {text}')
 
 
-class meme_bag:
-    def list_memes(self):
-        memes = [f for f in listdir(join(os.path.dirname(os.path.realpath(__file__)),'memes')) if isfile(join(os.path.dirname(os.path.realpath(__file__)),'memes', f))]
-        memesToStatus = {i : True for i in memes}
-        with open((join(os.path.dirname(os.path.realpath(__file__)), 'misc', 'memes.json')),'w') as f:
-            json.dump(memesToStatus, f, ensure_ascii=False, indent=4, separators=(',',': '))
-    def __init__(self):
-        self.list_memes()
-        self.memes =  shuffle_bag('memes')
-    def pop(self):
-        return join('memes', self.memes.pop())
-
-
 class shuffle_bag:
 
     def __init__(self, sourceFile):

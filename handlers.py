@@ -13,63 +13,8 @@ from responces import version
 
 def rabotaetli(bot, update):
         rabotaetlist = shuffle_bag('rabotaetliresplist')
-        if (random.randrange(0,10)>=1):
-                bot.send_message(chat_id=update.message.chat_id, text=rabotaetlist.pop())
-        else:
-                print('PROC!')
-                if update.message.from_user.id == securestuff.ilia_id:
-                        update.message.reply_text("Конечно нет, Илюх, а что?")
-                elif update.message.from_user.id == securestuff.leha_id:
-                        update.message.reply_text("А вы как думаете, Алексей?")
-                elif update.message.from_user.id == securestuff.pes_id:
-                        update.message.reply_text("Нет, зато у меня не четрвертинка мозга")
-                else:
-                        update.message.reply_text(rabotaetlist.pop())
+        bot.send_message(chat_id=update.message.chat_id, text=rabotaetlist.pop())
         print(('{0}||{1}:{2}'.format(time.asctime( time.localtime(time.time())), update.message.from_user.username, update.message.text)))
-
-
-def ver(bot, update):
-        print(('{0}||{1}:{2}'.format(time.asctime( time.localtime(time.time())), update.message.from_user.username, update.message.text)))
-        bot.send_message(chat_id=update.message.chat_id, text=version)
-        
-
-
-def shutka(bot, update):
-        responces = shuffle_bag('responceslist')
-        stickers = shuffle_bag('petrostickers')
-        print(('{0}||{1}:{2}'.format(time.asctime( time.localtime(time.time())), update.message.from_user.username, update.message.text)))        
-        bot.send_message(chat_id=update.message.chat_id, text=responces.pop())
-        for x in range(5):
-                bot.send_sticker(chat_id=update.message.chat_id,
-                                sticker=stickers.pop())
-
-
-def neznayu(bot, update):
-        fish = shuffle_bag('fishstick')
-        print(('{0}||{1}:{2}'.format(time.asctime( time.localtime(time.time())), update.message.from_user.username, update.message.text)))
-        for x in range(5):
-                bot.send_sticker(chat_id=update.message.chat_id,
-                                sticker=fish.pop())
-
-
-def nebo(bot, update):
-        print(('{0}||{1}:{2}'.format(time.asctime( time.localtime(time.time())), update.message.from_user.username, update.message.text)))
-        bot.send_message(chat_id=update.message.chat_id, text='А где неба нет?')
-        bot.send_sticker(chat_id=update.message.chat_id,
-                        sticker='CAADAgADCwEAAvR7GQABuArOzKHFjusC')
-
-
-def topshutka(bot, update):
-        print(('{0}||{1}:{2}'.format(time.asctime( time.localtime(time.time())), update.message.from_user.username, update.message.text)))
-        bot.send_message(chat_id=update.message.chat_id, text='https://www.youtube.com/watch?v=VQGLnaNQKds')
-
-
-def mem(bot, update):
-        memes = meme_bag()
-        print(('{0}||{1}:{2}'.format(time.asctime( time.localtime(time.time())), update.message.from_user.username, update.message.text)))
-        f = open(memes.pop(), 'rb')
-        bot.send_photo(chat_id=update.message.chat_id, photo=f)
-        f.close
 
 
 def qotd(bot, update):
