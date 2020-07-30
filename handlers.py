@@ -5,7 +5,7 @@ import telegram
 import os
 import pickle
 from os.path import join
-from misc import shuffle_bag, meme_bag
+from misc import shuffle_bag
 from responces import version
 
 
