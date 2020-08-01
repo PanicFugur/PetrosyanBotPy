@@ -17,7 +17,7 @@ class shuffle_bag:
     def __init__(self, sourceFile):
         self.source = sourceFile + '.json'
         try:
-            with open((join(os.path.dirname(os.path.realpath(__file__)), 'misc', self.source)),'r') as f:
+            with open((join(os.path.dirname(os.path.realpath(__file__)), 'misc', self.source)),'r', encoding='utf8') as f:
                 self.items = json.load(f)
             self.created = True
         except OSError as e:
@@ -56,7 +56,7 @@ class shuffle_bag:
                 self.refresh()
             item = self.draw()
             self.items[item] = False
-            with open((join(os.path.dirname(os.path.realpath(__file__)), 'misc', self.source)),'w') as f:
+            with open((join(os.path.dirname(os.path.realpath(__file__)), 'misc', self.source)),'w', encoding='utf8') as f:
                 json.dump(self.items, f, ensure_ascii=False, indent=4, separators=(',',': '))
             return item
         else:
