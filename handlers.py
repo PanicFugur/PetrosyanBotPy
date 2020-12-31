@@ -88,3 +88,8 @@ def start(bot, update):
         reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
 
         bot.send_message(chat_id=update.message.chat_id, text='Чего желаете?',reply_markup=reply_markup)
+
+
+def pozdravlenie(bot, update):
+        print(('{0}||{1}:{2}'.format(time.asctime( time.localtime(time.time())), update.message.from_user.username, update.message.text)))
+        bot.send_message(chat_id=update.message.chat_id, text='С новый годом, Овощи! Пусть для вас 2021 будет лучшим годом, все в жизни получалось и мало что удручало! Колян, тоже поздравь чтоле /kolyanpozdr')

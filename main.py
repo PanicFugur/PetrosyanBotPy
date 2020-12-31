@@ -49,6 +49,7 @@ def main():
         dispatcher.add_handler(CommandHandler('mem', handlers.mem))
         dispatcher.add_handler(CommandHandler('qotd', handlers.qotd))
         dispatcher.add_handler(CommandHandler('start', handlers.start))
+        dispatcher.add_handler(CommandHandler('ng', handlers.pozdravlenie))
         dispatcher.add_error_handler(error_callback)
 
 
