@@ -1,6 +1,6 @@
 asn1crypto==0.24.0
 astroid==2.2.4
-certifi==2018.11.29
+certifi==2022.12.7
 cffi==1.12.2
 colorama==0.4.1
 cryptography==3.3.2
